@@ -1,0 +1,1 @@
+{"root":["./src/config.ts","./src/index.ts","./src/controllers/portfoliocontroller.ts","./src/db/prisma.ts","./src/routes/portfolioroutes.ts"],"version":"5.8.3"}

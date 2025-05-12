@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id                  String   @id @default(cuid())
+  adminname           String
+  email               String   @unique
+  password            String
+  otpForResetPassword String   @default("")
+  AdminAddedAt        DateTime @default(now())
+  avatar              Avatar[]
+}
+
+model Avatar {
+  id        Int      @id @default(autoincrement())
+  publicId  String   @unique
+  url       String
+  createdAt DateTime @default(now())
+  admin     Admin    @relation(fields: [adminId], references: [id])
+  adminId   String // this is the Foreign key to Admin's Table !!
+}
+
+model GetInTouchResponse {
+  id                 Int            @id @default(autoincrement())
+  fullname           String
+  companyName        String?
+  email              String
+  contactNumber      String
+  projectType        projectType
+  projectDescription String
+  EstimatedBudget    String?
+  timeline           timeline?
+  contactMethod      contactMethod?
+  additionalInfo     String?
+  createdAt          DateTime       @default(now())
+}
+
+model PortfolioProjects {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  testimonial String?
+  videoUrl    String
+  websiteUrl  String
+  createdAt   DateTime @default(now())
+}
+
+enum projectType {
+  WebsiteDevelopment
+  MobileAppDevelopment
+  UIUXDesign
+  ContentWriting
+  Other
+}
+
+enum timeline {
+  lessThanOneMonth
+  oneToThreeMonths
+  threeToSixMonths
+  moreThanSixMonths
+  flexible
+}
+
+enum contactMethod {
+  email
+  phoneCall
+  videoCall
+  whatsapp
+}
