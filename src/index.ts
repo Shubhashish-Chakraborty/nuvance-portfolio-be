@@ -10,9 +10,7 @@ app.use(express.json());
 
 const corsOptions = {
     origin: [
-        'http://localhost:3000',
-        'https://nuvance-portfolio.vercel.app',
-        'https://nuvancetechnologies.vercel.app'
+        'https://nuvancetechnologies.com'
     ],
     credentials: true,
     optionsSuccessStatus: 200
