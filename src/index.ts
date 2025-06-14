@@ -10,7 +10,7 @@ app.use(express.json());
 
 const corsOptions = {
     origin: [
-        'https://nuvancetechnologies.com'
+        'https://www.nuvancetechnologies.com'
     ],
     credentials: true,
     optionsSuccessStatus: 200
